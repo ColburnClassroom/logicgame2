@@ -4446,7 +4446,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.layoutname,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Browser.Acts.GoToURLWindow,
-		C3.Plugins.Audio.Acts.Play
+		C3.Plugins.Audio.Acts.Play,
+		C3.Plugins.Touch.Cnds.OnTouchStart,
+		C3.Plugins.Browser.Cnds.IsFullscreen,
+		C3.Plugins.Browser.Acts.RequestFullScreen
 	];
 };
 self.C3_JsPropNameTable = [
