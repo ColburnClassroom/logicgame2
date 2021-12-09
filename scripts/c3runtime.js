@@ -4426,6 +4426,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Behaviors.solid.Acts.SetEnabled,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
+		C3.Plugins.Touch.Cnds.OnTouchStart,
+		C3.Plugins.Browser.Cnds.IsFullscreen,
+		C3.Plugins.Browser.Acts.RequestFullScreen,
 		C3.Behaviors.Platform.Cnds.IsMoving,
 		C3.Plugins.Sprite.Cnds.OnAnimFinished,
 		C3.Plugins.Tilemap.Acts.SetVisible,
@@ -4447,9 +4450,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Browser.Acts.GoToURLWindow,
 		C3.Plugins.Audio.Acts.Play,
-		C3.Plugins.Touch.Cnds.OnTouchStart,
-		C3.Plugins.Browser.Cnds.IsFullscreen,
-		C3.Plugins.Browser.Acts.RequestFullScreen
+		C3.Plugins.Sprite.Acts.SetPosToObject,
+		C3.Behaviors.MoveTo.Acts.MoveToObject
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4482,6 +4484,7 @@ self.C3_JsPropNameTable = [
 	{Touch: 0},
 	{questionsarray: 0},
 	{purplepaper: 0},
+	{pharaohnumber: 0},
 	{pharaoh: 0},
 	{foresttilemap: 0},
 	{spikes: 0},
@@ -4602,6 +4605,10 @@ self.C3_JsPropNameTable = [
 	{circles4: 0},
 	{circles3: 0},
 	{enemyacid: 0},
+	{spawningLocation2: 0},
+	{spawningLocation3: 0},
+	{ScreenShot20211205At43018PM: 0},
+	{triangle: 0},
 	{Chasing: 0},
 	{Climbing: 0},
 	{Pharaohclimbing: 0},
@@ -4609,9 +4616,11 @@ self.C3_JsPropNameTable = [
 	{Chasing2: 0},
 	{Climbing2: 0},
 	{Pharaohclimbing2: 0},
-	{health3: 0},
-	{Chasing3: 0},
-	{questionnumber: 0}
+	{shield: 0},
+	{health4: 0},
+	{Chasing4: 0},
+	{questionnumber: 0},
+	{anubishealth: 0}
 ];
 }
 
@@ -4819,6 +4828,7 @@ self.C3_ExpressionFuncs = [
 		() => "rightidle",
 		() => "backidle",
 		() => "frontidle",
+		() => 0.25,
 		() => 5,
 		() => 9,
 		() => 26,
@@ -4828,7 +4838,6 @@ self.C3_ExpressionFuncs = [
 		() => "closedred",
 		() => "player4",
 		() => "walking",
-		() => "wave",
 		() => "enemy4",
 		() => 456,
 		() => "player5",
@@ -4856,14 +4865,13 @@ self.C3_ExpressionFuncs = [
 		() => 10,
 		() => 11,
 		() => "player7",
+		() => 25,
+		() => 1100,
 		() => "throw acid",
-		() => "enemy7",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject(1);
 		},
-		() => 25,
-		() => 1100,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 15);
@@ -4872,18 +4880,25 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 15);
 		},
+		() => "wave",
+		() => "5 hearts",
+		() => "4 hearts",
+		() => "3 hearts",
+		() => "2 hearts",
+		() => "1 heart",
+		() => "0 hearts",
+		() => 0.75,
+		() => "doors",
 		() => 27,
 		() => 28,
 		() => 17,
 		() => 18,
 		() => 19,
 		() => 20,
-		() => "3 hearts",
-		() => "2 hearts",
-		() => "1 heart",
-		() => "0 hearts",
-		() => 0.25,
-		() => 0.75,
+		() => 33,
+		() => 21,
+		() => 22,
+		() => 39,
 		() => 172,
 		() => 35,
 		() => 1509,
@@ -4897,6 +4912,9 @@ self.C3_ExpressionFuncs = [
 		() => "start screen",
 		() => "https://colburnclassroom.com",
 		() => "NewWindow",
+		() => "generals orders",
+		() => "https://www.youtube.com/watch?v=RnMmXTVOjBY&list=PLcyVkNeXvb4hn57t2SYDj0HKdI3sz6qwN",
+		() => "end screen",
 		() => "directions",
 		() => "Question 1",
 		() => "",
@@ -4923,6 +4941,7 @@ self.C3_ExpressionFuncs = [
 		() => "Question 22",
 		() => "Question 23",
 		() => "Question 24",
+		() => "new powers",
 		() => "Question 25",
 		() => "Question 26",
 		() => "Question 27",
@@ -4934,7 +4953,26 @@ self.C3_ExpressionFuncs = [
 		() => "Question 31",
 		() => 32,
 		() => "Question 32",
-		() => 33
+		() => "Question 33",
+		() => 34,
+		() => "Question 34",
+		() => "Question 35",
+		() => 36,
+		() => "Question 36",
+		() => 37,
+		() => "Question 37",
+		() => 38,
+		() => "Question 38",
+		() => "Question 39",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 35);
+		},
+		() => 908,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 35);
+		}
 ];
 
 
