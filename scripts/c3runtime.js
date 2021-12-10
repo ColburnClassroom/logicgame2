@@ -4507,6 +4507,7 @@ self.C3_JsPropNameTable = [
 	{archernumber: 0},
 	{archermummy: 0},
 	{Pathfinding: 0},
+	{Sine2: 0},
 	{anubis: 0},
 	{doorexit: 0},
 	{sphinx: 0},
@@ -4609,6 +4610,7 @@ self.C3_JsPropNameTable = [
 	{spawningLocation3: 0},
 	{ScreenShot20211205At43018PM: 0},
 	{triangle: 0},
+	{Ball: 0},
 	{Chasing: 0},
 	{Climbing: 0},
 	{Pharaohclimbing: 0},
@@ -4972,7 +4974,17 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 35);
-		}
+		},
+		() => "throw",
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			const n3 = p._GetNode(3);
+			return () => C3.toDegrees(C3.angleTo(n0.ExpObject(), n1.ExpObject(), n2.ExpObject(), n3.ExpObject()));
+		},
+		() => "bloody",
+		() => "amazed"
 ];
 
 
