@@ -4557,7 +4557,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.System.Cnds.CompareVar,
-		C3.Plugins.Keyboard.Cnds.IsKeyDown,
+		C3.Plugins.Sprite.Cnds.IsAnimPlaying,
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Sprite.Cnds.OnCollision,
@@ -4567,6 +4567,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Platform.Acts.SetJumpStrength,
 		C3.Behaviors.Platform.Acts.SetMaxFallSpeed,
 		C3.Behaviors.Platform.Acts.SetGravity,
+		C3.Plugins.Keyboard.Cnds.IsKeyDown,
 		C3.Behaviors.Platform.Cnds.IsJumping,
 		C3.Plugins.Sprite.Acts.SetY,
 		C3.Plugins.System.Acts.SetBoolVar,
@@ -4576,7 +4577,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Pin.Acts.Pin,
 		C3.Plugins.System.Acts.SetLayerScale,
 		C3.Behaviors.TileMovement.Acts.SetIgnoreInput,
-		C3.Plugins.Sprite.Cnds.IsAnimPlaying,
 		C3.Plugins.Sprite.Acts.ZMoveToObject,
 		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
@@ -4769,6 +4769,7 @@ self.C3_JsPropNameTable = [
 	{triangle: 0},
 	{Ball: 0},
 	{greenpaper: 0},
+	{fist: 0},
 	{Chasing: 0},
 	{Climbing: 0},
 	{Pharaohclimbing: 0},
@@ -5028,11 +5029,14 @@ self.C3_ExpressionFuncs = [
 		() => "player7",
 		() => 25,
 		() => 1100,
+		() => "attacks",
 		() => "throw acid",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject(1);
 		},
+		() => "movement",
+		() => "enemies",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 15);
