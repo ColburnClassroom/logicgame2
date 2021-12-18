@@ -4538,23 +4538,23 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Audio,
 		C3.Plugins.Browser,
 		C3.Plugins.System.Cnds.IsGroupActive,
-		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
-		C3.Behaviors.MoveTo.Cnds.OnArrived,
-		C3.Plugins.Sprite.Cnds.CompareX,
-		C3.Behaviors.MoveTo.Acts.MoveToPosition,
-		C3.Plugins.Sprite.Acts.SetMirrored,
 		C3.Plugins.Sprite.Cnds.IsOverlapping,
 		C3.Plugins.Sprite.Acts.SetAnim,
-		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.Sprite.Exps.X,
-		C3.Plugins.Sprite.Exps.Y,
-		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Behaviors.scrollto.Acts.SetEnabled,
 		C3.Behaviors.Platform.Acts.SetIgnoreInput,
 		C3.Behaviors.Platform.Acts.SetVectorX,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.System.Acts.RestartLayout,
+		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
+		C3.Behaviors.MoveTo.Cnds.OnArrived,
+		C3.Plugins.Sprite.Cnds.CompareX,
+		C3.Behaviors.MoveTo.Acts.MoveToPosition,
+		C3.Plugins.Sprite.Acts.SetMirrored,
+		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.Sprite.Exps.X,
+		C3.Plugins.Sprite.Exps.Y,
+		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.System.Cnds.CompareVar,
@@ -4578,6 +4578,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Pin.Acts.Pin,
 		C3.Plugins.System.Acts.SetLayerScale,
 		C3.Behaviors.TileMovement.Acts.SetIgnoreInput,
+		C3.Plugins.Audio.Acts.StopAll,
+		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.Sprite.Acts.ZMoveToObject,
 		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
@@ -4598,18 +4600,19 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Pathfinding.Acts.AddObstacle,
 		C3.Behaviors.Pathfinding.Acts.FindPath,
 		C3.Behaviors.MoveTo.Acts.MoveAlongPathfindingPath,
+		C3.Plugins.System.Acts.ToggleBoolVar,
+		C3.Plugins.Sprite.Acts.SetFlipped,
+		C3.Plugins.Sprite.Acts.SetPosToObject,
+		C3.Behaviors.MoveTo.Acts.MoveToObject,
+		C3.Plugins.System.Exps.layoutname,
+		C3.Plugins.Touch.Cnds.OnTapGestureObject,
+		C3.Plugins.Browser.Acts.GoToURLWindow,
+		C3.Plugins.Sprite.Acts.SetX,
 		C3.Plugins.Sprite.Cnds.IsMirrored,
 		C3.Plugins.Sprite.Exps.ImagePointX,
 		C3.Plugins.Sprite.Exps.ImagePointY,
 		C3.Behaviors.Bullet.Acts.SetAngleOfMotion,
-		C3.Behaviors.Pin.Acts.PinByProperties,
-		C3.Plugins.Sprite.Acts.SetFlipped,
-		C3.Plugins.System.Exps.layoutname,
-		C3.Plugins.Touch.Cnds.OnTapGestureObject,
-		C3.Plugins.Browser.Acts.GoToURLWindow,
-		C3.Plugins.Audio.Acts.Play,
-		C3.Plugins.Sprite.Acts.SetPosToObject,
-		C3.Behaviors.MoveTo.Acts.MoveToObject
+		C3.Behaviors.Pin.Acts.PinByProperties
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4700,7 +4703,7 @@ self.C3_JsPropNameTable = [
 	{scifitilemap: 0},
 	{Bullet: 0},
 	{Acid: 0},
-	{tube: 0},
+	{statisCell: 0},
 	{barrell: 0},
 	{movingdoornumber: 0},
 	{locked: 0},
@@ -4771,6 +4774,8 @@ self.C3_JsPropNameTable = [
 	{Ball: 0},
 	{greenpaper: 0},
 	{fist: 0},
+	{bouldernumber: 0},
+	{boulder: 0},
 	{Chasing: 0},
 	{Climbing: 0},
 	{Pharaohclimbing: 0},
@@ -4779,10 +4784,11 @@ self.C3_JsPropNameTable = [
 	{generalsorders: 0},
 	{Climbing2: 0},
 	{Pharaohclimbing2: 0},
+	{questionnumber: 0},
 	{shield: 0},
 	{health4: 0},
 	{Chasing4: 0},
-	{questionnumber: 0},
+	{bonus: 0},
 	{anubishealth: 0}
 ];
 }
@@ -4885,8 +4891,13 @@ function or(l, r)
 
 self.C3_ExpressionFuncs = [
 		() => "player",
-		() => "enemy",
+		() => "death",
+		() => 0,
 		() => 1,
+		() => 130,
+		() => 455,
+		() => "idle",
+		() => "enemy",
 		() => 639,
 		() => 395,
 		() => 464,
@@ -4921,11 +4932,6 @@ self.C3_ExpressionFuncs = [
 			return () => (1111 - n0.ExpObject());
 		},
 		() => 85.5,
-		() => "death",
-		() => 0,
-		() => 130,
-		() => 455,
-		() => "idle",
 		() => "player3",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4993,6 +4999,7 @@ self.C3_ExpressionFuncs = [
 		() => "backidle",
 		() => "frontidle",
 		() => 0.25,
+		() => "",
 		() => 5,
 		() => 9,
 		() => 26,
@@ -5023,22 +5030,6 @@ self.C3_ExpressionFuncs = [
 		() => 16,
 		() => 114,
 		() => 1160,
-		() => "player6",
-		() => 416,
-		() => "enemy6",
-		() => 10,
-		() => 11,
-		() => "player7",
-		() => 25,
-		() => 1100,
-		() => "attacks",
-		() => "throw acid",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpObject(1);
-		},
-		() => "movement",
-		() => "enemies",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 15);
@@ -5047,34 +5038,52 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 15);
 		},
-		() => "deaths",
-		() => "wave",
-		() => "5 hearts",
-		() => "4 hearts",
-		() => "3 hearts",
-		() => "2 hearts",
-		() => "1 heart",
-		() => "0 hearts",
 		() => 0.75,
-		() => "doors",
-		() => 27,
-		() => 28,
-		() => 17,
-		() => 18,
-		() => 19,
-		() => 20,
-		() => 33,
-		() => 21,
-		() => 22,
-		() => 39,
+		() => "player6",
+		() => 416,
+		() => "enemy6",
+		() => 10,
+		() => 11,
+		() => 25,
+		() => 1100,
 		() => "scorpions",
-		() => "attack 2",
+		() => "roll",
+		() => "stationary",
 		() => 172,
 		() => 35,
+		() => 27,
+		() => 28,
 		() => 1509,
 		() => 319,
 		() => 1566,
 		() => 909,
+		() => 32,
+		() => 33,
+		() => 34,
+		() => 38,
+		() => 36,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 35);
+		},
+		() => 908,
+		() => 37,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 35);
+		},
+		() => "anubis",
+		() => 39,
+		() => "bloody",
+		() => "amazed",
+		() => "throw",
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			const n3 = p._GetNode(3);
+			return () => C3.toDegrees(C3.angleTo(n0.ExpObject(), n1.ExpObject(), n2.ExpObject(), n3.ExpObject()));
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
@@ -5087,7 +5096,6 @@ self.C3_ExpressionFuncs = [
 		() => "end screen",
 		() => "directions",
 		() => "Question 1",
-		() => "",
 		() => "Question 2",
 		() => "Question 3",
 		() => "Question 4",
@@ -5121,38 +5129,55 @@ self.C3_ExpressionFuncs = [
 		() => "Question 30",
 		() => 31,
 		() => "Question 31",
-		() => 32,
 		() => "Question 32",
 		() => "Question 33",
-		() => 34,
 		() => "Question 34",
 		() => "Question 35",
-		() => 36,
 		() => "Question 36",
-		() => 37,
 		() => "Question 37",
-		() => 38,
 		() => "Question 38",
 		() => "Question 39",
+		() => "passive",
+		() => "wave",
+		() => "throw acid",
+		() => "movement",
+		() => "ladder and climbing",
 		p => {
 			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 35);
+			return () => (n0.ExpObject() + 1);
 		},
-		() => 908,
+		() => "climbing",
 		p => {
 			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 35);
+			return () => (n0.ExpObject() - 1);
 		},
-		() => "throw",
 		p => {
 			const n0 = p._GetNode(0);
-			const n1 = p._GetNode(1);
-			const n2 = p._GetNode(2);
-			const n3 = p._GetNode(3);
-			return () => C3.toDegrees(C3.angleTo(n0.ExpObject(), n1.ExpObject(), n2.ExpObject(), n3.ExpObject()));
+			return () => (n0.ExpObject() + 0.5);
 		},
-		() => "bloody",
-		() => "amazed"
+		() => "attacks",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject(1);
+		},
+		() => "enemies",
+		() => "health",
+		() => "5 hearts",
+		() => "4 hearts",
+		() => "3 hearts",
+		() => "2 hearts",
+		() => "1 heart",
+		() => "0 hearts",
+		() => "deaths",
+		() => "doors",
+		() => 17,
+		() => 18,
+		() => 19,
+		() => 20,
+		() => 21,
+		() => 22,
+		() => 23,
+		() => 24
 ];
 
 
