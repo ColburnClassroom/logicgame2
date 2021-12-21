@@ -4968,6 +4968,7 @@ self.C3_ExpressionFuncs = [
 		() => "teleport",
 		() => 635,
 		() => 810,
+		() => "deteleport",
 		() => 723,
 		() => 70,
 		() => 680,
@@ -4976,7 +4977,6 @@ self.C3_ExpressionFuncs = [
 		() => 469,
 		() => 430,
 		() => 338,
-		() => 1.5,
 		() => 300,
 		() => 200,
 		() => 175,
@@ -5173,6 +5173,7 @@ self.C3_ExpressionFuncs = [
 		() => "0 hearts",
 		() => "deaths",
 		() => "doors",
+		() => 1.5,
 		() => 17,
 		() => 18,
 		() => 19,
@@ -5181,7 +5182,11 @@ self.C3_ExpressionFuncs = [
 		() => 22,
 		() => 23,
 		() => 24,
-		() => "items"
+		() => "items",
+		() => "Animation 1",
+		() => "Animation 2",
+		() => "Animation 3",
+		() => "Animation 4"
 ];
 
 
