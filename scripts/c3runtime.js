@@ -4580,6 +4580,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.TileMovement.Acts.SetIgnoreInput,
 		C3.Plugins.Audio.Acts.StopAll,
 		C3.Plugins.Audio.Acts.Play,
+		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.ZMoveToObject,
 		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
@@ -4588,7 +4589,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Touch.Cnds.OnTouchStart,
 		C3.Plugins.Browser.Cnds.IsFullscreen,
 		C3.Plugins.Browser.Acts.RequestFullScreen,
-		C3.Plugins.Text.Acts.SetVisible,
 		C3.Behaviors.Platform.Cnds.IsMoving,
 		C3.Plugins.Sprite.Cnds.OnAnimFinished,
 		C3.Plugins.Tilemap.Acts.SetVisible,
@@ -4776,6 +4776,7 @@ self.C3_JsPropNameTable = [
 	{fist: 0},
 	{bouldernumber: 0},
 	{boulder: 0},
+	{rune: 0},
 	{Chasing: 0},
 	{Climbing: 0},
 	{Pharaohclimbing: 0},
@@ -4998,11 +4999,13 @@ self.C3_ExpressionFuncs = [
 		() => "rightidle",
 		() => "backidle",
 		() => "frontidle",
+		() => "stargate door",
 		() => 0.25,
 		() => "",
 		() => 5,
 		() => 9,
 		() => 26,
+		() => "dialogue",
 		() => "closedgreen",
 		() => "open",
 		() => "green",
@@ -5177,7 +5180,8 @@ self.C3_ExpressionFuncs = [
 		() => 21,
 		() => 22,
 		() => 23,
-		() => 24
+		() => 24,
+		() => "items"
 ];
 
 
