@@ -4579,7 +4579,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetLayerScale,
 		C3.Behaviors.TileMovement.Acts.SetIgnoreInput,
 		C3.Plugins.Audio.Acts.StopAll,
-		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.ZMoveToObject,
 		C3.Plugins.Keyboard.Cnds.OnKey,
@@ -4607,6 +4606,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.layoutname,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Browser.Acts.GoToURLWindow,
+		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.Sprite.Acts.SetX,
 		C3.Plugins.Sprite.Cnds.IsMirrored,
 		C3.Plugins.Sprite.Exps.ImagePointX,
@@ -4777,6 +4777,7 @@ self.C3_JsPropNameTable = [
 	{bouldernumber: 0},
 	{boulder: 0},
 	{rune: 0},
+	{computer2: 0},
 	{Chasing: 0},
 	{Climbing: 0},
 	{Pharaohclimbing: 0},
@@ -4790,7 +4791,8 @@ self.C3_JsPropNameTable = [
 	{health4: 0},
 	{Chasing4: 0},
 	{bonus: 0},
-	{anubishealth: 0}
+	{anubishealth: 0},
+	{Mute: 0}
 ];
 }
 
@@ -5001,7 +5003,6 @@ self.C3_ExpressionFuncs = [
 		() => "frontidle",
 		() => "stargate door",
 		() => 0.25,
-		() => "",
 		() => 5,
 		() => 9,
 		() => 26,
@@ -5099,6 +5100,7 @@ self.C3_ExpressionFuncs = [
 		() => "end screen",
 		() => "directions",
 		() => "Question 1",
+		() => "",
 		() => "Question 2",
 		() => "Question 3",
 		() => "Question 4",
